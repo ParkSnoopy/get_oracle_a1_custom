@@ -5,7 +5,7 @@ from pathlib import Path
 import oci
 from oci.config import validate_config
 
-from get_oracle_a1 import commands, config, helpers, usecases
+from get_oracle_a1_custom import commands, config, helpers, usecases
 
 
 def main():

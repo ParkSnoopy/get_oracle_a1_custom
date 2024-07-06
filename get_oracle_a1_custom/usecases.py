@@ -3,7 +3,7 @@ from time import sleep
 
 from oci.exceptions import ServiceError
 
-from get_oracle_a1 import commands, config, helpers
+from get_oracle_a1_custom import commands, config, helpers
 
 logger = logging.getLogger(__name__)
 RETRY_SEC = 120
@@ -89,7 +89,7 @@ def create(cmd: commands.CreateA1, oci_user: config.OCIUser) -> None:
             else:
                 count_after_last_rate_limited += 1
 
-            sleep(3)  # to prevent rate limited
+            sleep(10)  # to prevent rate limited
 
         else:
             logger.info(f'Succeed to create in {try_count} tries.')

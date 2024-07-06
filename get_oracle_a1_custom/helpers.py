@@ -20,8 +20,8 @@ from oci.identity import IdentityClient
 from oci.identity.models import AvailabilityDomain
 from oci.limits import LimitsClient
 
-from get_oracle_a1.config import OCIUser
-from get_oracle_a1.models import IncreaseStep, ResourceLimit
+from get_oracle_a1_custom.config import OCIUser
+from get_oracle_a1_custom.models import IncreaseStep, ResourceLimit
 
 TARGET_SHAPE = 'VM.Standard.A1.Flex'
 
