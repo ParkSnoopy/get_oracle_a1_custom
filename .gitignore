@@ -1,3 +1,7 @@
+# Disinclude bak files
+.get_oracle_a1.d/
+
+
 ### Vim template
 # Swap
 [._]*.s[a-v][a-z]

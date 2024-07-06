@@ -1,23 +1,24 @@
 # syntax=docker/dockerfile:1.4
 
-FROM python:3.12.0-alpine AS builder
+FROM python:3.12.4-alpine AS builder
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 ENV CC='ccache gcc'
 
 RUN \
-    apk add --update --no-cache gcc ccache musl-dev libffi-dev \
-    && pip install --no-cache-dir build
-COPY poetry.lock pyproject.toml /src/
-COPY get_oracle_a1 /src/get_oracle_a1
-RUN python -m build --wheel -o /tmp/dist /src
+    apk add --update --no-cache gcc ccache musl-dev libffi-dev &&\
+    pip install --upgrade pip &&\
+    pip install --no-cache-dir build
+COPY pyproject.toml /src/
+COPY get_oracle_a1_custom /src/get_oracle_a1_custom
+RUN python3 -m build --wheel -o /tmp/dist /src
 RUN \
   --mount=type=cache,target=/root/.cache/pip \
   --mount=type=cache,target=/root/.cache/ccache \
     pip wheel /tmp/dist/*.whl --wheel-dir /wheel
 
-FROM python:3.12.0-alpine
+FROM python:3.12.4-alpine
 
-MAINTAINER 'Byeonghoon Isac Yoo <bh322yoo@gmail.com>'
+MAINTAINER "sunwoo2539 <contact@sunwoo.top>"
 
 RUN \
   --mount=type=bind,target=/wheel,from=builder,source=/wheel \
@@ -28,4 +29,4 @@ RUN \
       --find-links=/wheel \
       /tmp/wheel/*.whl
 
-ENTRYPOINT ["/usr/local/bin/get_oracle_a1"]
+ENTRYPOINT ["/usr/local/bin/get_oracle_a1_custom"]
