@@ -1,4 +1,4 @@
-## Get by
+## Get from Docker hub
 `docker pull sunwoo2539/get_oracle_a1_custom:0.3.3`
 
 ---
