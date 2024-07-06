@@ -1,18 +1,18 @@
 
 [tool.poetry]
-name = "get_oracle_a1"
-version = "0.3.0"
+name = "get_oracle_a1_custom"
+version = "0.3.3"
 description = ""
-authors = ["Byeonghoon Yoo <bh322yoo@gmail.com>"]
+authors = ["Byeonghoon Yoo <bh322yoo@gmail.com>", "sunwoo2539 <contact@sunwoo.top>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 oci = "^2.103.0"
 pydantic = "^1.10.10"
 
 [tool.poetry.scripts]
-get_oracle_a1 = 'get_oracle_a1:main'
+get_oracle_a1_custom = 'get_oracle_a1_custom:main'
 
 [tool.poetry.group.dev.dependencies]
 flake8-pyproject = "^1.2.3"
